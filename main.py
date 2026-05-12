@@ -1,3 +1,4 @@
+import sys
 from src.manager import Manager
 from src.models import Parameters
 
@@ -64,10 +65,16 @@ def display_tenants(manager):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) < 4:
+        print("Użycie: python main.py <apartment_key> <year> <month>")
+        sys.exit(1)
+
+    apartment_key = (sys.argv[1])
+    year = int(sys.argv[2])
+    month = int(sys.argv[3])
     parameters = Parameters()
     manager = Manager(parameters)
-
-    display_apartments(manager)
-    display_tenants(manager)
     
-    print(f"\n{'=' * 70}\n")
+    display_settlement = manager.get_settlement(apartment_key, year, month)
+
+print(display_settlement)
