@@ -84,3 +84,5 @@ def test_tenant_from_dict():
     with pytest.raises(ValidationError):
         data['rent_pln'] = "1500PLN" # Invalid field
         wrong_tenant = Tenant(**data)
+
+        
