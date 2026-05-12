@@ -30,3 +30,27 @@ def test_if_tenants_have_valid_apartment_keys():
 
     manager.tenants['tenant-1'].apartment = 'invalid-key'
     assert manager.check_tenants_apartment_keys() == False
+
+def test_lista_dluznikow():
+    parameters = Parameters()
+    manager = Manager(parameters)
+
+    dluznicy = manager.get_debtors(
+        apartment_key="apart-polanka",
+        year=2025,
+        month=1
+    )
+
+    assert isinstance(dluznicy, list)
+
+def test_podatek_od_najmu():
+    parameters = Parameters()
+    manager = Manager(parameters)
+
+    podatek = manager.get_tax(
+        year=2025,
+        month=1,
+        tax_rate=0.085
+    )
+
+    assert isinstance(podatek, float)
