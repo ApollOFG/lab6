@@ -77,4 +77,4 @@ if __name__ == '__main__':
     
     display_settlement = manager.get_settlement(apartment_key, year, month)
 
-print(display_settlement)
+    print(display_settlement)
